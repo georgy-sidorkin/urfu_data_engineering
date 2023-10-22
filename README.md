@@ -1,2 +1,2 @@
 # urfu_data_engineering
-repository for homework
+Репозиторий для домашних заданий по Инженерии данных

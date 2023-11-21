@@ -1,3 +1,7 @@
 .DS_Store
 .idea/
 /practice2/tasks/Практическая работа 2.docx
+/practice2/tasks/lego.csv
+/practice2/results/lego.json
+/practice2/results/lego.msgpack
+/practice2/results/lego.pkl

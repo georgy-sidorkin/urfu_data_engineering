@@ -94,9 +94,93 @@ def handle_update(db, update_items):
                 print(f"unknown method {item['method']}")
 
 
+def get_top_updated(db, limit=10):
+    cursor = db.cursor()
+    res = cursor.execute("SELECT name, version FROM products ORDER BY version DESC LIMIT ?", [limit])
+    items = list()
+
+    for row in res.fetchall():
+        items.append(dict(row))
+    cursor.close()
+
+    return items
+
+
+def get_group_price_stat(db):
+    cursor = db.cursor()
+    res = cursor.execute("""
+    SELECT category,
+           SUM(price) AS sum_price,
+           MIN(price) AS min_price,
+           MAX(price) AS max_price,
+           AVG(price) AS avg_price,
+           COUNT(name) AS products_count
+    FROM products
+    GROUP BY category""")
+    items = list()
+
+    for row in res.fetchall():
+        items.append(dict(row))
+    cursor.close()
+
+    return items
+
+
+def get_group_quantity_stat(db):
+    cursor = db.cursor()
+    res = cursor.execute("""
+    SELECT category,
+           SUM(quantity) AS sum_quantity,
+           MIN(quantity) AS min_quantity,
+           MAX(quantity) AS max_quantity,
+           AVG(quantity) AS avg_quantity
+    FROM products
+    GROUP BY category""")
+    items = list()
+
+    for row in res.fetchall():
+        items.append(dict(row))
+    cursor.close()
+
+    return items
+
+
+def get_top_viewed_products(db, limit=10):
+    cursor = db.cursor()
+    res = cursor.execute("""
+    SELECT name,
+           views
+    FROM products
+    GROUP BY name
+    ORDER BY views DESC
+    LIMIT ?""", [limit])
+    items = list()
+
+    for row in res.fetchall():
+        items.append(dict(row))
+    cursor.close()
+
+    return items
+
+
 products = load_data("tasks/task_4_var_80_product_data.csv")
 upd = load_pickle("tasks/task_4_var_80_update_data.pkl")
 conn = connect_to_db("db4")
 
-insert_data(conn, products)
-handle_update(conn, upd)
+# insert_data(conn, products)
+# handle_update(conn, upd)
+top_updated = get_top_updated(conn, 10)
+with open("results/task4_top_updated.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(top_updated))
+
+category_price_stats = get_group_price_stat(conn)
+with open("results/task4_category_price_stats.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(category_price_stats))
+
+category_quantity_stats = get_group_quantity_stat(conn)
+with open("results/task4_category_quantity_stats.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(category_quantity_stats))
+
+top_viewed = get_top_viewed_products(conn, 10)
+with open("results/task4_top_viewed.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(top_viewed))

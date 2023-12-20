@@ -1,0 +1,10 @@
+Для задания 5 использовались данные с рекомендациями игр из Steam.
+https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam/data?select=games_metadata.json
+
+games.csv - список игр, доступных в Steam
+users.csv - список зарегистрированных пользователей
+recommendations.csv - таблица рекомендации игр
+games_metadata.json - описание и жанр игр
+
+Файл базы данных:
+https://drive.google.com/file/d/1DRu5A9QhZbtnmGkcdL31GZDLMKUxwxvo/view?usp=share_link

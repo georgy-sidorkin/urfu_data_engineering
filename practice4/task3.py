@@ -131,16 +131,16 @@ insert_data(conn, songs)
 
 top_popularity = get_top_by_popularity(conn, 80+10)
 with open("results/task3_top_popularity.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(top_popularity))
+    f.write(json.dumps(top_popularity, ensure_ascii=False))
 
 duration_stats = get_stat_by_duration(conn)
 with open("results/task3_duration_stats.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(duration_stats))
+    f.write(json.dumps(duration_stats, ensure_ascii=False))
 
 artist_freq = get_freq_by_artist(conn)
 with open("results/task3_artist_freq.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(artist_freq))
+    f.write(json.dumps(artist_freq, ensure_ascii=False))
 
 filtered_songs = filter_by_tempo(conn, 150, 80+15)
 with open("results/task3_filtered_songs.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(filtered_songs))
+    f.write(json.dumps(filtered_songs, ensure_ascii=False))

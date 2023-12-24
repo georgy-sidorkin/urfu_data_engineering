@@ -72,7 +72,12 @@ for tour in items:
         filtered_items.append(tour)
 
 with open("results/task1_filtered_min_rating_2500.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(filtered_items))
+    f.write(json.dumps(filtered_items, ensure_ascii=False))
 
-print(calc_stats("views", items))
-print(calc_frequency("city", items))
+views_stats = calc_stats("views", items)
+with open("results/task1_views_stats.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(views_stats, ensure_ascii=False))
+
+city_freq = calc_frequency("city", items)
+with open("results/task1_city_freq.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(city_freq, ensure_ascii=False))

@@ -69,7 +69,12 @@ for item in items:
         filtered_items.append(item)
 
 with open("results/task2_filtered_min_bonus_2000.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(filtered_items))
+    f.write(json.dumps(filtered_items, ensure_ascii=False))
 
-print(calc_stats("price", items))
-print(calc_frequency("ram", items))
+price_stats = calc_stats("price", items)
+with open("results/task2_price_stats.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(price_stats, ensure_ascii=False))
+
+ram_freq = calc_frequency("ram", items)
+with open("results/task2_ram_freq.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(ram_freq, ensure_ascii=False))

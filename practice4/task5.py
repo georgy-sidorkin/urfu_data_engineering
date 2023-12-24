@@ -241,18 +241,18 @@ insert_into_recommendations_csv(conn, 'data/recommendations.csv')
 insert_into_games_metadata_json(conn, 'data/games_metadata.json')
 
 with open('results/task5_get_count_per_year.json', "w", encoding="utf-8") as f:
-    f.write(json.dumps(get_count_per_year(conn)))
+    f.write(json.dumps(get_count_per_year(conn), ensure_ascii=False))
 
 with open('results/task5_get_games_on_all_os.json', "w", encoding="utf-8") as f:
-    f.write(json.dumps(get_games_on_all_os(conn)))
+    f.write(json.dumps(get_games_on_all_os(conn), ensure_ascii=False))
 
 with open('results/task5_get_max_reviews_products.json', "w", encoding="utf-8") as f:
-    f.write(json.dumps(get_max_reviews_products(conn)))
+    f.write(json.dumps(get_max_reviews_products(conn), ensure_ascii=False))
 
 with open('results/task5_get_max_hours.json', "w", encoding="utf-8") as f:
-    f.write(json.dumps(get_max_hours(conn)))
+    f.write(json.dumps(get_max_hours(conn), ensure_ascii=False))
 
 with open('results/task5_get_most_rec_game.json', "w", encoding="utf-8") as f:
-    f.write(json.dumps(get_most_rec_game(conn)))
+    f.write(json.dumps(get_most_rec_game(conn), ensure_ascii=False))
 
 delete_last_10_years(conn)

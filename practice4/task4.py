@@ -171,16 +171,16 @@ conn = connect_to_db("db4")
 # handle_update(conn, upd)
 top_updated = get_top_updated(conn, 10)
 with open("results/task4_top_updated.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(top_updated))
+    f.write(json.dumps(top_updated, ensure_ascii=False))
 
 category_price_stats = get_group_price_stat(conn)
 with open("results/task4_category_price_stats.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(category_price_stats))
+    f.write(json.dumps(category_price_stats, ensure_ascii=False))
 
 category_quantity_stats = get_group_quantity_stat(conn)
 with open("results/task4_category_quantity_stats.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(category_quantity_stats))
+    f.write(json.dumps(category_quantity_stats, ensure_ascii=False))
 
 top_viewed = get_top_viewed_products(conn, 10)
 with open("results/task4_top_viewed.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(top_viewed))
+    f.write(json.dumps(top_viewed, ensure_ascii=False))

@@ -97,23 +97,23 @@ def filter_by_tours(db, min_tours_count, limit=10):
 # read data
 df = parse_file("tasks/task_1_var_80_item.pkl")
 # connect to db
-conn = connect_to_db("db1")
+conn = connect_to_db("db2")
 
 # inser data into table
 insert_data(conn, df)
 
 sorted_df = get_top_by_rating(conn, 80+10)
 with open("results/task1_sorted_by_rating.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(sorted_df))
+    f.write(json.dumps(sorted_df, ensure_ascii=False))
 
 stats = get_stat_by_time(conn)
 with open("results/task1_stats_by_time.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(stats))
+    f.write(json.dumps(stats, ensure_ascii=False))
 
 freq = get_freq_by_system(conn)
 with open("results/task1_freq_system.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(freq))
+    f.write(json.dumps(freq, ensure_ascii=False))
 
 filtered_df = filter_by_tours(conn, min_tours_count=10, limit=80+10)
 with open("results/task1_filter_min_tours.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(filtered_df))
+    f.write(json.dumps(filtered_df, ensure_ascii=False))

@@ -82,16 +82,16 @@ def third_query(db):
 df = load_data("tasks/task_2_var_80_subitem.msgpack")
 conn = connect_to_db("db2")
 
-insert_data(conn, df)
+# insert_data(conn, df)
 
 first = first_query(conn, "Барселона")
 with open("results/task2_query_1.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(first))
+    f.write(json.dumps(first, ensure_ascii=False))
 
 second = second_query(conn, "Барселона")
 with open("results/task2_query_2.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(second))
+    f.write(json.dumps(second, ensure_ascii=False))
 
 third = third_query(conn)
 with open("results/task2_query_3.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(third))
+    f.write(json.dumps(third, ensure_ascii=False))

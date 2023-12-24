@@ -72,7 +72,12 @@ for item in items:
         filtered_items.append(item)
 
 with open("results/task4_filtered_min_rating_4.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(filtered_items))
+    f.write(json.dumps(filtered_items, ensure_ascii=False))
 
-print(calc_stats("price", items))
-print(calc_frequency("category", items))
+price_stats = calc_stats("price", items)
+with open("results/task4_price_stats.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(price_stats, ensure_ascii=False))
+
+category_freq = calc_frequency("category", items)
+with open("results/task4_category_freq.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(category_freq, ensure_ascii=False))

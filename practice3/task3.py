@@ -62,7 +62,12 @@ for item in items:
         filtered_items.append(item)
 
 with open("results/task3_filtered_min_radius_9e8.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(filtered_items))
+    f.write(json.dumps(filtered_items, ensure_ascii=False))
 
-print(calc_stats("radius", items))
-print(calc_frequency("constellation", items))
+radius_stats = calc_stats("radius", items)
+with open("results/task3_radius_stats.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(radius_stats, ensure_ascii=False))
+
+constellation_freq = calc_frequency("constellation", items)
+with open("results/task3_constellation_freq.json", "w", encoding="utf-8") as f:
+    f.write(json.dumps(constellation_freq, ensure_ascii=False))

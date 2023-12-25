@@ -54,7 +54,7 @@ for i in range(1, 501):
 items = sorted(items, key=lambda x: int(x['radius']), reverse=True)
 
 with open("results/task3_all.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(items))
+    f.write(json.dumps(items, ensure_ascii=False))
 
 filtered_items = []
 for item in items:

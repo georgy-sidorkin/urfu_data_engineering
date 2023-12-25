@@ -61,7 +61,7 @@ for i in range(1, 29):
 items = sorted(items, key=lambda x: x['price'], reverse=True)
 
 with open("results/task2_all.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(items))
+    f.write(json.dumps(items, ensure_ascii=False))
 
 filtered_items = []
 for item in items:

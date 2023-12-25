@@ -64,7 +64,7 @@ for i in range(1, 1000):
 items = sorted(items, key=lambda x: x["views"], reverse=True)
 
 with open("results/task1_all.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(items))
+    f.write(json.dumps(items, ensure_ascii=False))
 
 filtered_items = []
 for tour in items:
